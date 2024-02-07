@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { EventEmitter } from "@/events/EventEmitter";
 import { pause, play, stop } from "@/events/audioEvents";
 import { ProgressBar } from "@/components/ProgressBar";
+import {AudioPlayerControls} from "@/components/AudioPlayerControls";
 
 interface AudioPlayerProps {
   src: string;
@@ -34,9 +35,9 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({ src }) => {
       eventEmitter.unsubscribe('play', () => play(audio as HTMLAudioElement));
       eventEmitter.unsubscribe('pause', () => pause(audio as HTMLAudioElement));
       eventEmitter.unsubscribe('stop', () => stop(audio as HTMLAudioElement));
-      audio?.removeEventListener('timeupdate', handleTimeUpdate);
+      audio?.removeEventListener('timeupdate', () => handleTimeUpdate);
     }
-  }, [audioRef.current, isSeeking]);
+  }, [audioRef.current, isSeeking, duration, currentTime, setCurrentTime, setDuration, setIsSeeking]);
 
   const onPlay = () => {
     eventEmitter.dispatch('play');
@@ -64,7 +65,12 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({ src }) => {
 
   return (
     <div>
-      <audio ref={audioRef} controls src={src} />
+      <audio
+        className="hidden"
+        ref={audioRef}
+        controls
+        src={src}
+      />
       <ProgressBar
         currentTime={currentTime}
         duration={duration}
@@ -72,32 +78,11 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({ src }) => {
         onSeek={handleSeek}
         setIsSeeking={setIsSeeking}
       />
-      <div className="bg-slate-50 text-slate-500 dark:bg-slate-600 dark:text-slate-200 rounded-b-xl flex items-center">
-        <div className="flex-auto flex items-center justify-evenly">
-          <button
-            onClick={onPlay}
-            type="button"
-            className="hidden sm:block lg:hidden xl:block"
-          >
-            <img src="/play.svg" alt="play" width={48}/>
-          </button>
-        </div>
-        <button
-          type="button"
-          onClick={onPause}
-          className="flex-auto flex items-center justify-evenly"
-        >
-          <img src="/pause.svg" alt="pause" width={48} />
-        </button>
-        <div className="flex-auto flex items-center justify-evenly">
-          <button
-            type="button"
-            onClick={onStop}
-          >
-            <img src="/stop.svg" alt="stop" width={48} />
-          </button>
-        </div>
-      </div>
+      <AudioPlayerControls
+        onPlay={onPlay}
+        onPause={onPause}
+        onStop={onStop}
+      />
     </div>
   );
 };
