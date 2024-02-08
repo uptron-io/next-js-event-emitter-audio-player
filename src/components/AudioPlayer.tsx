@@ -37,7 +37,7 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({ src }) => {
       eventEmitter.unsubscribe('stop', () => stop(audio as HTMLAudioElement));
       audio?.removeEventListener('timeupdate', () => handleTimeUpdate);
     }
-  }, [audioRef.current, isSeeking, duration, currentTime, setCurrentTime, setDuration, setIsSeeking]);
+  }, [audioRef.current, isSeeking, duration, currentTime]);
 
   const onPlay = () => {
     eventEmitter.dispatch('play');
