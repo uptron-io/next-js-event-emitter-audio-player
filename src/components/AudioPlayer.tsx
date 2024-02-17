@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { EventEmitter } from "@/events/EventEmitter";
 import { pause, play, stop } from "@/events/audioEvents";
 import { ProgressBar } from "@/components/ProgressBar";
-import {AudioPlayerControls} from "@/components/AudioPlayerControls";
+import { AudioPlayerControls } from "@/components/AudioPlayerControls";
 
 interface AudioPlayerProps {
   src: string;
@@ -64,7 +64,7 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({ src }) => {
   };
 
   return (
-    <div>
+    <div className="w-full">
       <audio
         className="hidden"
         ref={audioRef}

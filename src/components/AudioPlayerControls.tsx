@@ -8,7 +8,7 @@ interface AudioPlayerControlsProps {
 
 export const AudioPlayerControls: React.FC<AudioPlayerControlsProps> = ({ onPlay, onPause, onStop }) => {
   return (
-    <div className="bg-slate-50 text-slate-500 dark:bg-slate-600 dark:text-slate-200 rounded-b-xl flex items-center">
+    <div className="bg-slate-600 text-slate-200 rounded-b-xl flex items-center">
       <div className="flex-auto flex items-center justify-evenly p-2">
         <button
           onClick={onPlay}
