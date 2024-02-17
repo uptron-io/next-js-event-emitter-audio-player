@@ -1,7 +1,5 @@
 'use client'
-import React, { useState, useEffect, useRef } from "react";
-import { EventEmitter } from "@/events/EventEmitter";
-import { pause, play, stop } from "@/events/audioEvents";
+import React from "react";
 import {AudioPlayer} from "@/components/AudioPlayer";
 
 export default function Home() {

@@ -10,8 +10,8 @@ interface ProgressBarProps {
 }
 
 export const ProgressBar: React.FC<ProgressBarProps> = ({ currentTime, duration, isSeeking, onSeek, setIsSeeking }) => {
-  const progressBarWidth = `${(currentTime / duration) * 100}%`;
-  const cursorPosition = `${Math.round((currentTime / duration) * 100)}%`;
+  const progressBarWidth = (currentTime / duration) * 100;
+  const cursorPosition = Math.round((currentTime / duration) * 100);
 
   return (
     <div
@@ -31,7 +31,7 @@ export const ProgressBar: React.FC<ProgressBarProps> = ({ currentTime, duration,
               role="progressbar"
               aria-label="music progress"
               aria-valuenow={progressBarWidth}
-              aria-valuemin="0"
+              aria-valuemin={0}
               aria-valuemax={duration}
             />
           </div>
