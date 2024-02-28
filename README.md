@@ -1,36 +1,77 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Next.js Event Emitter Audio Player
 
-## Getting Started
+Приветствую вас! Этот репозиторий представляет собой простой аудиоплеер на основе Next.js, использующий event emitter для управления воспроизведением аудио. Ниже приведены инструкции по клонированию, установке зависимостей и запуску проекта.
 
-First, run the development server:
+## Клонирование репозитория
+
+Чтобы склонировать репозиторий, выполните следующую команду в вашем терминале:
+
+```bash
+git clone https://github.com/uptron-io/next-js-event-emitter-audio-player.git
+```
+
+## Установка зависимостей
+
+Перейдите в корневую папку проекта и выполните команду установки зависимостей:
+```bash
+npm install
+```
+
+## Запуск проекта
+
+Для запуска проекта используйте команду:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+После этого вы сможете открыть ваш браузер и перейти по адресу http://localhost:3000 для просмотра аудиоплеера.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Изменение на свой аудио файл
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Закиньте Ваш аудио файл в папку public.
+Откройте файл /src/app/page.tsx и измените значение атрибута src на название вашего аудио файла.
 
-## Learn More
+```bash
+<AudioPlayer src="/[your_audio_file_name].[extension]" />
+```
 
-To learn more about Next.js, take a look at the following resources:
+# Next.js Event Emitter Audio Player
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Welcome! This repository is a simple audio player built on Next.js, utilizing an event emitter to manage audio playback. Below are instructions for cloning, installing dependencies, and running the project.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Cloning the Repository
 
-## Deploy on Vercel
+To clone the repository, execute the following command in your terminal:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```bash
+git clone https://github.com/uptron-io/next-js-event-emitter-audio-player.git
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Installing Dependencies
+
+Navigate to the project's root folder and run the following command to install dependencies:
+
+```bash
+npm install
+```
+
+## Running the Project
+
+To run the project, use the following command:
+
+```bash
+npm run dev
+```
+
+After that, you can open your browser and go to http://localhost:3000 to view the audio player.
+
+## Changing to Your Audio File
+
+Place your audio file in the public folder.
+Open the file /src/app/page.tsx and change the value of the src attribute to your audio file's name.
+
+
+```bash
+<AudioPlayer src="/[your_audio_file_name].[extension]" />
+```
