@@ -15,19 +15,19 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({ src }) => {
   const [duration, setDuration] = useState(0);
   const [isSeeking, setIsSeeking] = useState(false);
 
+  const handleTimeUpdate = () => {
+    if (!isSeeking) {
+      setCurrentTime(audioRef?.current?.currentTime || 0);
+    }
+    setDuration(audioRef?.current?.duration || 0);
+  };
+
   useEffect(() => {
     const audio = audioRef.current;
 
     eventEmitter.subscribe('play', () => play(audio as HTMLAudioElement));
     eventEmitter.subscribe('pause', () => pause(audio as HTMLAudioElement));
     eventEmitter.subscribe('stop', () => stop(audio as HTMLAudioElement));
-
-    const handleTimeUpdate = () => {
-      if (!isSeeking) {
-        setCurrentTime(audio?.currentTime || 0);
-      }
-      setDuration(audio?.duration || 0);
-    };
 
     audio?.addEventListener('timeupdate', handleTimeUpdate);
 
